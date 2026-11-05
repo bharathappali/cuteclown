@@ -1,0 +1,22 @@
+CuteClown
+Copyright 2026 CuteClown contributors
+
+This product is licensed under the Apache License, Version 2.0.
+You may obtain a copy of the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Originality
+-----------
+CuteClown is an original, clean-room implementation. Its source code,
+styles, documentation, and public APIs are written from scratch and are
+not copied, ported, translated, or closely paraphrased from other UI,
+headless, motion, or charting libraries.
+
+Public concepts (for example WAI-ARIA authoring patterns, CSS custom
+properties, cascade layers, damped-spring mathematics, and published
+algorithms) may be used, but must be implemented independently.
+
+This NOTICE does not grant any rights beyond those in the Apache License
+2.0 and does not list third-party runtime dependencies; core packages
+are intended to ship with zero runtime dependencies.
