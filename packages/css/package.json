@@ -1,0 +1,11 @@
+{
+  "name": "@cuteclown/css",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": true,
+  "exports": {
+    ".": "./src/index.css"
+  },
+  "files": ["src"]
+}
