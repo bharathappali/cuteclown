@@ -1,0 +1,40 @@
+@layer cc.base {
+  .cc-ambiance {
+    background-color: var(--cc-color-surface);
+    background-image:
+      var(--cc-ambiance-periwinkle), var(--cc-ambiance-butter), var(--cc-ambiance-pink),
+      var(--cc-ambiance-mint);
+    background-repeat: no-repeat;
+    animation: cc-ambiance-drift 24s ease-in-out infinite alternate;
+  }
+
+  @keyframes cc-ambiance-drift {
+    from {
+      background-position:
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%;
+    }
+    to {
+      background-position:
+        2% 1%,
+        98% 2%,
+        97% 98%,
+        1% 96%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cc-ambiance {
+      animation-play-state: paused;
+    }
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .cc-ambiance {
+      background-image: none;
+      animation: none;
+    }
+  }
+}
