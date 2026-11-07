@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { expect, test } from "vitest";
-import { isLicenseAllowed, parseAllowlist } from "./check-licenses.mjs";
+import { isLicenseAllowed, licenseManifestCandidates, parseAllowlist } from "./check-licenses.mjs";
 
 const allowlistPath = new URL("./license-allowlist.json", import.meta.url);
 
@@ -21,4 +21,13 @@ test("accepts an allowlisted license and a dual OR expression", () => {
 
 test("rejects an allowlist without an allowed array", () => {
   expect(() => parseAllowlist("{}")).toThrow(/allowed/);
+});
+
+test("looks for a dependency license next to the consuming package first", () => {
+  const [nearest, repoRoot] = licenseManifestCandidates(
+    "/repo/apps/playground/package.json",
+    "@scope/pkg",
+  );
+  expect(nearest).toBe("/repo/apps/playground/node_modules/@scope/pkg/package.json");
+  expect(repoRoot.endsWith("/node_modules/@scope/pkg/package.json")).toBe(true);
 });
