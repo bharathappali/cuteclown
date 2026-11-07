@@ -31,7 +31,7 @@ export default defineConfig({
       {
         test: {
           name: "root",
-          include: ["scripts/**/*.test.ts"],
+          include: ["scripts/**/*.test.ts", "packages/**/*.test.ts"],
         },
       },
       ...packageProjectDirs(fileURLToPath(new URL(".", import.meta.url)), workspaceProjects),
