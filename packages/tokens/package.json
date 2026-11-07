@@ -8,11 +8,17 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
-    }
+    },
+    "./themes/clown-soft.light.css": "./dist/themes/clown-soft.light.css",
+    "./themes/clown-soft.dark.css": "./dist/themes/clown-soft.dark.css",
+    "./themes/clown-soft.high-contrast.css": "./dist/themes/clown-soft.high-contrast.css"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "tsup",
+    "validate:contrast": "node --experimental-strip-types scripts/validate-contrast.ts",
+    "build": "node --experimental-strip-types scripts/validate-contrast.ts && tsup && node --experimental-strip-types scripts/build-tokens.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
