@@ -1,0 +1,5 @@
+@layer cc.utilities {
+  .cc-will-change {
+    will-change: transform;
+  }
+}
