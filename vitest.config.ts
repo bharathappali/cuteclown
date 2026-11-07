@@ -17,7 +17,7 @@ export function packageProjectDirs(repoRoot: string, globs: readonly string[]): 
         continue;
       }
       const pkg = join(dir, name);
-      if (existsSync(join(pkg, "vitest.config.ts")) || existsSync(join(pkg, "vite.config.ts"))) {
+      if (existsSync(join(pkg, "vitest.config.ts"))) {
         projects.push(pkg);
       }
     }
