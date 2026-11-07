@@ -6,7 +6,9 @@
   "scripts": {
     "build": "echo \"build: not configured yet\"",
     "test": "vitest run",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "check:licenses": "node scripts/check-licenses.mjs",
+    "check:size": "node scripts/check-size.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
