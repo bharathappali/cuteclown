@@ -41,4 +41,6 @@ jobs:
         run: pnpm check:licenses
 
       - name: Size check
-        run: pnpm check:size
+        run: |
+          pnpm --filter @cuteclown/motion build
+          pnpm check:size

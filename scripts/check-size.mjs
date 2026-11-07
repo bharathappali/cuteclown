@@ -2,6 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import process from "node:process";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { gzipSync } from "node:zlib";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -23,6 +24,11 @@ export function loadBudgets(raw) {
     }
   }
   return data;
+}
+
+/** @param {Buffer | string} bytes */
+export function gzipByteLength(bytes) {
+  return gzipSync(bytes).length;
 }
 
 export function findDistDirs(repoRoot = root) {
@@ -47,16 +53,34 @@ export function findDistDirs(repoRoot = root) {
   return dirs;
 }
 
+/** @param {number} size @param {number} limit @param {string} name */
+export function budgetFailure(size, limit, name) {
+  if (size <= limit) {
+    return "";
+  }
+  return `${name} gzip ${size} exceeds ${limit}`;
+}
+
 function checkSizes() {
-  loadBudgets(readFileSync(join(root, "scripts/size-budgets.json"), "utf8"));
+  const budgets = loadBudgets(readFileSync(join(root, "scripts/size-budgets.json"), "utf8"));
   const dists = findDistDirs();
   if (dists.length === 0) {
     process.stdout.write("size check: no dist output, skipping\n");
     return;
   }
-  process.stdout.write(
-    `size check: dist present (${dists.length}), measurement lands with package builds\n`,
-  );
+  const motionBundle = join(root, "packages/motion/dist/index.js");
+  if (!existsSync(motionBundle)) {
+    process.stdout.write(`size check: dist present (${dists.length}), motion bundle not built\n`);
+    return;
+  }
+  const size = gzipByteLength(readFileSync(motionBundle));
+  const failure = budgetFailure(size, budgets.motionGzip, "motion");
+  if (failure) {
+    process.stderr.write(`${failure}\n`);
+    process.exitCode = 1;
+    return;
+  }
+  process.stdout.write(`size check: motion gzip ${size} within ${budgets.motionGzip}\n`);
 }
 
 const entry = process.argv[1];
