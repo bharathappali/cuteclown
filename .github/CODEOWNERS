@@ -1,0 +1,11 @@
+# Default owners for CuteClown.
+# GitHub uses these for review requests when the feature is enabled.
+
+* @bharathappali
+
+/packages/ @bharathappali
+/apps/ @bharathappali
+/.github/ @bharathappali
+
+# Local planning docs (often gitignored; listed for when tracked)
+/docs/plan/ @bharathappali
