@@ -1,0 +1,16 @@
+@layer cc.utilities {
+  [data-elevation="raised"] {
+    box-shadow: var(--cc-surface-raised-shadow);
+  }
+
+  [data-elevation="inset"] {
+    box-shadow: var(--cc-surface-inset-shadow);
+  }
+
+  @media (forced-colors: active) {
+    [data-elevation="raised"],
+    [data-elevation="inset"] {
+      box-shadow: none;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@layer cc.components {
+  .cc-progress {
+    block-size: var(--cc-component-progress-height);
+  }
+}

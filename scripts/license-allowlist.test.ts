@@ -7,7 +7,7 @@ const allowlistPath = new URL("./license-allowlist.json", import.meta.url);
 test("parses the SPDX allowlist", () => {
   const allowed = parseAllowlist(readFileSync(allowlistPath, "utf8"));
   expect(allowed).toEqual(
-    expect.arrayContaining(["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC"]),
+    expect.arrayContaining(["MIT", "Apache-2.0", "BSD-2-Clause", "BSD-3-Clause", "ISC", "MPL-2.0"]),
   );
 });
 

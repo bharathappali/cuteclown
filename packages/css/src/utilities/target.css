@@ -1,0 +1,8 @@
+@layer cc.utilities {
+  @media (pointer: coarse) {
+    .cc-target {
+      min-width: 44px;
+      min-height: 44px;
+    }
+  }
+}

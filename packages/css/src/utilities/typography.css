@@ -1,0 +1,22 @@
+@layer cc.utilities {
+  .cc-text-body {
+    font-family: var(--cc-font-body);
+    font-size: 0.875rem;
+    line-height: 1.45;
+  }
+
+  .cc-text-title {
+    font-family: var(--cc-font-heading);
+    font-size: 1.25rem;
+    line-height: 1.2;
+  }
+
+  .cc-text-label {
+    font-family: var(--cc-font-label);
+    font-size: 0.78125rem;
+  }
+
+  .cc-tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}

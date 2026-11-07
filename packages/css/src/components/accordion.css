@@ -1,0 +1,5 @@
+@layer cc.components {
+  .cc-accordion {
+    --cc-accordion-duration: var(--cc-component-accordion-duration);
+  }
+}

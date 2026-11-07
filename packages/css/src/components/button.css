@@ -1,0 +1,6 @@
+@layer cc.components {
+  .cc-button {
+    padding-inline: var(--cc-component-button-padding-inline);
+    padding-block: var(--cc-component-button-padding-block);
+  }
+}

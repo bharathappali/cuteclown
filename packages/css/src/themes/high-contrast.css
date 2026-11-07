@@ -1,0 +1,7 @@
+@import "./clown-soft.high-contrast.css";
+
+@media (prefers-contrast: more) {
+  :root {
+    --cc-color-border: #000000;
+  }
+}

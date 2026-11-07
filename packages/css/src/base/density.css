@@ -1,0 +1,9 @@
+@layer cc.base {
+  [data-cc-density="comfortable"] {
+    --cc-density: 1;
+  }
+
+  [data-cc-density="compact"] {
+    --cc-density: 0.85;
+  }
+}

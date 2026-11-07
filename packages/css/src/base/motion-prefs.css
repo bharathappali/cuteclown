@@ -1,0 +1,13 @@
+@layer cc.base {
+  :root {
+    --cc-motion-travel: 1;
+    --cc-motion-fade: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      --cc-motion-travel: 0;
+      --cc-motion-fade: 0;
+    }
+  }
+}

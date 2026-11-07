@@ -1,0 +1,18 @@
+@layer cc.utilities {
+  .cc-gradient-text {
+    background-image: linear-gradient(
+      var(--cc-gradient-angle-text),
+      var(--cc-gradient-from),
+      var(--cc-gradient-to)
+    );
+    background-clip: text;
+    color: transparent;
+  }
+
+  @media (forced-colors: active) {
+    .cc-gradient-text {
+      background-image: none;
+      color: CanvasText;
+    }
+  }
+}
