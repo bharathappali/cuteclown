@@ -1,8 +1,31 @@
 import { expect, test } from "vitest";
-import { MockClock, Spring, underdampedAt } from "./index.ts";
+import * as motion from "./index.ts";
 
-test("motion exports the clock, solver, and spring", () => {
-  expect(new MockClock().now()).toBe(0);
-  expect(underdampedAt(0, 1, 0, 1, 8, 0.5).x).toBeCloseTo(1, 6);
-  expect(new Spring().settled).toBe(true);
+test("public motion exports cover springs, gestures, and preferences", () => {
+  expect(Object.keys(motion).sort()).toEqual(
+    [
+      "MockClock",
+      "Spring",
+      "animateSpring",
+      "createDrag",
+      "createScheduler",
+      "createSpringBudget",
+      "createVelocityTracker",
+      "criticalAt",
+      "dampingFromBounce",
+      "degradeBudget",
+      "flipInvert",
+      "microPresets",
+      "nearestSnap",
+      "omegaFromResponse",
+      "overdampedAt",
+      "prefersReducedMotion",
+      "resolveLowEnd",
+      "rubberBand",
+      "springFromDurationBounce",
+      "systemClock",
+      "tweenNumber",
+      "underdampedAt",
+    ].sort(),
+  );
 });
