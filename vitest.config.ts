@@ -1,16 +1,28 @@
 import { existsSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vitest/config";
 import { workspaceProjects } from "./vitest.workspace.ts";
 
-/** Skip package/app globs until those directories contain projects. */
-function existingProjectGlobs(globs: readonly string[]): string[] {
-  return globs.filter((glob) => {
-    const dir = glob.replace(/\/\*$/, "");
+/** Include a workspace package only when it has its own Vitest project. */
+export function packageProjectDirs(repoRoot: string, globs: readonly string[]): string[] {
+  const projects: string[] = [];
+  for (const glob of globs) {
+    const dir = join(repoRoot, glob.replace(/\/\*$/, ""));
     if (!existsSync(dir)) {
-      return false;
+      continue;
     }
-    return readdirSync(dir).some((name) => !name.startsWith("."));
-  });
+    for (const name of readdirSync(dir)) {
+      if (name.startsWith(".")) {
+        continue;
+      }
+      const pkg = join(dir, name);
+      if (existsSync(join(pkg, "vitest.config.ts")) || existsSync(join(pkg, "vite.config.ts"))) {
+        projects.push(pkg);
+      }
+    }
+  }
+  return projects;
 }
 
 export default defineConfig({
@@ -22,7 +34,7 @@ export default defineConfig({
           include: ["scripts/**/*.test.ts"],
         },
       },
-      ...existingProjectGlobs(workspaceProjects),
+      ...packageProjectDirs(fileURLToPath(new URL(".", import.meta.url)), workspaceProjects),
     ],
     passWithNoTests: true,
   },
