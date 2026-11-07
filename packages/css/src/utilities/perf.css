@@ -1,0 +1,6 @@
+@layer cc.utilities {
+  .cc-contain {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 24rem;
+  }
+}
