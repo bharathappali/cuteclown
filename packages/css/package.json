@@ -5,7 +5,27 @@
   "type": "module",
   "sideEffects": true,
   "exports": {
-    ".": "./src/index.css"
+    ".": "./dist/index.css",
+    "./card.css": "./src/components/card.css",
+    "./button.css": "./src/components/button.css",
+    "./chip.css": "./src/components/chip.css",
+    "./accordion.css": "./src/components/accordion.css",
+    "./progress.css": "./src/components/progress.css",
+    "./tooltip.css": "./src/components/tooltip.css",
+    "./bento.css": "./src/components/bento.css",
+    "./stat-tile.css": "./src/components/stat-tile.css",
+    "./stale-badge.css": "./src/components/stale-badge.css"
   },
-  "files": ["src"]
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint:css": "stylelint \"src/**/*.css\""
+  },
+  "devDependencies": {
+    "lightningcss": "^1.32.0",
+    "stylelint": "^17.11.0"
+  }
 }
