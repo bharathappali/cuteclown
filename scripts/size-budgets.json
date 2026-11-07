@@ -1,0 +1,8 @@
+{
+  "tokensAndBaseCssGzip": 12288,
+  "motionGzip": 4096,
+  "coreGzip": 2048,
+  "componentJsGzip": 2048,
+  "componentCssGzip": 2048,
+  "adapterOverheadGzip": 1024
+}
