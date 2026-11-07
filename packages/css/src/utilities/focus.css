@@ -1,0 +1,10 @@
+@layer cc.utilities {
+  :root {
+    --cc-focus: var(--cc-focus-width, 3px) solid var(--cc-focus-color, #6e70e8);
+  }
+
+  :focus-visible {
+    outline: var(--cc-focus);
+    outline-offset: 2px;
+  }
+}
