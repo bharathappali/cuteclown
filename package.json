@@ -1,10 +1,20 @@
 {
   "name": "cuteclown",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@12.15.0",
   "scripts": {
     "build": "echo \"build: not configured yet\"",
-    "test": "echo \"test: not configured yet\"",
-    "lint": "echo \"lint: not configured yet\""
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^26.6.6",
+    "eslint": "^10.14.0",
+    "prettier": "^3.9.10",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.72.1",
+    "vitest": "^5.1.0"
   }
 }
