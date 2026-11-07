@@ -18,6 +18,6 @@ test("rejects a budget file missing a required key", () => {
   expect(() => loadBudgets('{"motionGzip":4096}')).toThrow(/tokensAndBaseCssGzip/);
 });
 
-test("skips when the repo has no dist directories", () => {
-  expect(findDistDirs(new URL("..", import.meta.url).pathname)).toEqual([]);
+test("skips when a tree has no dist directories", () => {
+  expect(findDistDirs("/tmp/cuteclown-size-check-empty")).toEqual([]);
 });

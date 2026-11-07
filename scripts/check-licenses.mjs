@@ -47,10 +47,25 @@ function workspacePackageJsons() {
   return files;
 }
 
-/** @param {string} pkgName */
-function readDirectLicense(pkgName) {
-  const pkgJson = join(root, "node_modules", ...pkgName.split("/"), "package.json");
-  if (!existsSync(pkgJson)) {
+/**
+ * pnpm links direct dependencies inside the consuming package, not only at the repo root.
+ * @param {string} packageJsonPath
+ * @param {string} depName
+ */
+export function licenseManifestCandidates(packageJsonPath, depName) {
+  const segments = depName.split("/");
+  return [
+    join(dirname(packageJsonPath), "node_modules", ...segments, "package.json"),
+    join(root, "node_modules", ...segments, "package.json"),
+  ];
+}
+
+/** @param {string} packageJsonPath @param {string} pkgName */
+function readDirectLicense(packageJsonPath, pkgName) {
+  const pkgJson = licenseManifestCandidates(packageJsonPath, pkgName).find((candidate) =>
+    existsSync(candidate),
+  );
+  if (!pkgJson) {
     return null;
   }
   const data = JSON.parse(readFileSync(pkgJson, "utf8"));
@@ -77,7 +92,7 @@ function checkDirectLicenses() {
       ...Object.keys(pkg.optionalDependencies ?? {}),
     ];
     for (const name of names) {
-      const license = readDirectLicense(name);
+      const license = readDirectLicense(file, name);
       if (!isLicenseAllowed(license, allowed)) {
         failures.push(`${name} (${license ?? "unknown"}) required by ${file}`);
       }

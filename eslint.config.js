@@ -9,6 +9,7 @@ export default tseslint.config(
       "**/coverage/**",
       "instruct/**",
       "docs/plan/**",
+      "**/.astro/**",
     ],
   },
   eslint.configs.recommended,
