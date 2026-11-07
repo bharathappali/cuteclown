@@ -1,0 +1,6 @@
+@layer cc.components {
+  .cc-card {
+    border-radius: var(--cc-component-card-radius);
+    border: 1px solid var(--cc-color-border);
+  }
+}

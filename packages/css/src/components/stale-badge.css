@@ -1,0 +1,6 @@
+@layer cc.components {
+  .cc-stale-badge {
+    inline-size: var(--cc-component-stale-badge-size);
+    block-size: var(--cc-component-stale-badge-size);
+  }
+}

@@ -1,0 +1,5 @@
+@layer cc.components {
+  .cc-tooltip {
+    border-radius: var(--cc-component-tooltip-radius);
+  }
+}

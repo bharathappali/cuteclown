@@ -1,0 +1,5 @@
+@layer cc.components {
+  .cc-chip {
+    border-radius: var(--cc-component-chip-radius);
+  }
+}

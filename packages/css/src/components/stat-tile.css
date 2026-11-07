@@ -1,0 +1,5 @@
+@layer cc.components {
+  .cc-stat-tile {
+    font-size: var(--cc-component-stat-value-size);
+  }
+}

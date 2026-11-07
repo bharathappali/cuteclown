@@ -1,0 +1,5 @@
+@layer cc.components {
+  .cc-bento {
+    gap: var(--cc-component-bento-gap);
+  }
+}
